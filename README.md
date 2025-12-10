@@ -11,3 +11,6 @@
 
 - Clone the repo
 - Run `npm run dev`
+
+\
+![App Screenshot](https://iili.io/fRiLIvp.png)

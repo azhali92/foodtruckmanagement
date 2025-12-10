@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { MenuItem, SizeType } from "../../types/MenuItem";
 import type { OrderMenuItem } from "../../types/OrderMenuItem";
 
@@ -41,12 +41,17 @@ const FoodMenuItem: React.FC<FoodMenuItemProp> = ({ item: menuItm, onAddItem, on
 
     if (isThisItemPresentInCurrentItems()) {
       onRemoveItem(orderItem);
-      setCurrentSelectedSize("S");
-      setSpecialRequestText("");
     } else {
       onAddItem(orderItem);
     }
   }, [currentSelectedSize, specialRequestTxt, currentOrderItems]);
+
+  useEffect(() => {
+    if (currentOrderItems.length == 0) {
+      setCurrentSelectedSize("S");
+      setSpecialRequestText("");
+    }
+  }, [currentOrderItems]);
 
   return (
     <div className="h-30 bg-yellow-100 p-2 relative flex flex-col">

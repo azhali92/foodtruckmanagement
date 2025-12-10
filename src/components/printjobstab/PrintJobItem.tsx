@@ -1,7 +1,13 @@
-const PrintJobItem: React.FC = () => {
+import type { PrintJobItem } from "../../types/PrintJobItem";
+
+type PrintJobItemPropType = {
+  item: PrintJobItem;
+};
+
+const PrintJobItemView: React.FC<PrintJobItemPropType> = ({ item }) => {
   return (
     <div className=" bg-yellow-100 p-2 relative flex flex-col">
-      <div className="font-bold">Print Job Id #</div>
+      <div className="font-bold text-sm">{`Print Job Id # ${item.print_job_id}`}</div>
       <div className="font-bold">Type : ORDER_RECEIPT</div>
       <div className="font-bold text-amber-600">Status : PENDING</div>
 
@@ -10,4 +16,4 @@ const PrintJobItem: React.FC = () => {
   );
 };
 
-export default PrintJobItem;
+export default PrintJobItemView;

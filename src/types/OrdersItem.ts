@@ -4,5 +4,5 @@ export type OrderItem = {
   order_id: string;
   items: OrderMenuItem[];
   lastUpdatedBy: string;
-  lastUpdatedAt: string;
+  lastUpdatedAt: number;
 };

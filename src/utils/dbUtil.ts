@@ -33,7 +33,7 @@ export async function initDb() {
       menuItemStore.createIndex("by-name", "name");
       menuItemStore.createIndex("by-category", "category");
       db.createObjectStore("orders", {
-        keyPath: "id",
+        keyPath: "order_id",
         autoIncrement: true,
       });
       db.createObjectStore("printjob", {
@@ -46,12 +46,12 @@ export async function initDb() {
       });
     },
   });
-
   await loadDummyData(db);
 }
 
 export async function loadDummyData(db: IDBPDatabase<FoodTruckDB>) {
   const menuItems = await db.getAll("menuitems");
+  console.log("come here");
   if (menuItems.length == 0) {
     console.log("Adding!");
     db.add("menuitems", {

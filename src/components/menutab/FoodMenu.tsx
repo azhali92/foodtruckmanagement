@@ -3,7 +3,7 @@ import Filter from "./Filter";
 import FoodMenuItem from "./FoodMenuItem";
 import type { MenuItem, MenuType } from "../../types/MenuItem";
 import { useAppStore } from "../../zustandstore/appstore";
-import { getAllMenuItems, getMenuItemsBasedOnFilter } from "../../managers/OfflineDataStore";
+import { createOrder, getAllMenuItems, getMenuItemsBasedOnFilter } from "../../managers/OfflineDataStore";
 import type { OrderMenuItem } from "../../types/OrderMenuItem";
 
 const FoodMenu = () => {
@@ -37,7 +37,8 @@ const FoodMenu = () => {
   };
 
   const onPlaceOrder = () => {
-    //WE SEND SOCKET MESSAGE WITH PAYLOAD
+    createOrder(currentOrderItems);
+    setCurrentOrderItems([]);
   };
 
   useEffect(() => {

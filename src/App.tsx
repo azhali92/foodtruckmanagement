@@ -16,6 +16,8 @@ function App() {
 
   const triggerOnDbUpdate = useAppStore((state) => state.triggerOnDbUpdate);
 
+  const [hasDbInitComplete, setHasDbInitComplete] = useState<boolean>(false);
+
   const syncDataWithCentralHub = async () => {
     // await syncMenuItemsFromCentralHub();
     // await syncOrdersFromCentralHub();
@@ -27,9 +29,12 @@ function App() {
   useEffect(() => {
     setOperatingStaus("BUSY");
     initDb().then(() => {
+      setHasDbInitComplete(true);
       syncDataWithCentralHub();
     });
   }, []);
+
+  if (!hasDbInitComplete) return <></>;
 
   return (
     <div className="p-2 h-screen flex flex-col gap-2">

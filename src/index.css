@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(119, 111, 76);
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
